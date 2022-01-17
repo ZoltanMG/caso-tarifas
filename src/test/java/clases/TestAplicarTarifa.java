@@ -10,8 +10,8 @@ public class TestAplicarTarifa {
     @Test
     public void testObtenerPrecioDeProducto() {
         String productoIngresado = "pizza";
-        Integer precioEsperado = 4000;
-        Integer precioDevuelto;
+        int precioEsperado = 4000;
+        int precioDevuelto;
 
         precioDevuelto = aplicarTarifa.precioProducto(productoIngresado);
         assertEquals(precioEsperado, precioDevuelto);
@@ -19,12 +19,38 @@ public class TestAplicarTarifa {
 
     @Test
     public void testAplicarDescuentoProducto() {
-        Integer precioPoducto = aplicarTarifa.precioProducto("mazorcada");
-        Integer porcentajeDescuento = 50;
-        Integer precioEsperado = 5000;
-        Integer precioDevuelto;
+        int precioPoducto = aplicarTarifa.precioProducto("mazorcada");
+        int porcentajeDescuento = 20;
+        int precioEsperado = 8000;
+        int precioConDescuento;
 
-        precioDevuelto = aplicarTarifa.descuento(precioPoducto, porcentajeDescuento);
-        assertEquals(precioEsperado, precioDevuelto);
+        precioConDescuento = aplicarTarifa.descuento(precioPoducto, porcentajeDescuento);
+        assertEquals(precioEsperado, precioConDescuento);
+    }
+
+    @Test
+    public void testAplicarIva() {
+        int precioSinIva = aplicarTarifa.precioProducto("hamburguesa");
+        int precioEsperado = 9520;
+        int precioConIva;
+
+        precioConIva = aplicarTarifa.iva(precioSinIva);
+        assertEquals(precioEsperado, precioConIva);
+    }
+
+    @Test
+    public void testTarifaFinal() {
+        int porcentajdeDescuento = 50;
+        int porcentajdeDescuentoCero = 0;
+        String producto = "choriperro";
+        int tarifaFinalEsperada = 4165;
+        int tarifaFinalEsperadaCero = 8330;
+        int tarifaFinalDevuelta;
+        int tarifaFinalDevueltaCero;
+
+        tarifaFinalDevuelta = aplicarTarifa.tarifaFinal(producto, porcentajdeDescuento);
+        tarifaFinalDevueltaCero = aplicarTarifa.tarifaFinal(producto, porcentajdeDescuentoCero);
+        assertEquals(tarifaFinalEsperada, tarifaFinalDevuelta);
+        assertEquals(tarifaFinalEsperadaCero, tarifaFinalDevueltaCero);
     }
 }
