@@ -7,4 +7,10 @@ public class AplicarTarifa {
         precioProducto = productos.stack.get(productoIngresado);
         return precioProducto;
     }
+
+    public Integer descuento(Integer precioProducto, Integer porcentajeDescuento) {
+        Integer precioConDescuento;
+        precioConDescuento = (precioProducto * porcentajeDescuento) / 100;
+        return precioConDescuento;
+    }
 }

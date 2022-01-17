@@ -16,4 +16,15 @@ public class TestAplicarTarifa {
         precioDevuelto = aplicarTarifa.precioProducto(productoIngresado);
         assertEquals(precioEsperado, precioDevuelto);
     }
+
+    @Test
+    public void testAplicarDescuentoProducto() {
+        Integer precioPoducto = aplicarTarifa.precioProducto("mazorcada");
+        Integer porcentajeDescuento = 50;
+        Integer precioEsperado = 5000;
+        Integer precioDevuelto;
+
+        precioDevuelto = aplicarTarifa.descuento(precioPoducto, porcentajeDescuento);
+        assertEquals(precioEsperado, precioDevuelto);
+    }
 }
