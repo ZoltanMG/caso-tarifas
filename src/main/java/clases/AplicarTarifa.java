@@ -1,10 +1,12 @@
 package clases;
 
+import com.sun.deploy.cache.BaseLocalApplicationProperties;
+
 public class AplicarTarifa {
     public int precioProducto(String productoIngresado) {
         int precioProducto;
         Productos productos = new Productos();
-        precioProducto = productos.stack.get(productoIngresado);
+        precioProducto = Productos.stack.get(productoIngresado);
         return precioProducto;
     }
 
